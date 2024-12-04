@@ -20,7 +20,7 @@ function displayFileName() {
 
   // JOB Listings
 
-  document.getElementById('loadJobs').addEventListener('click', () => {
+  
     fetch('jobs.json') // Fetch the JSON file
       .then(response => response.json()) // Parse the JSON data
       .then(data => {
@@ -57,5 +57,5 @@ function displayFileName() {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-  });
+
   
