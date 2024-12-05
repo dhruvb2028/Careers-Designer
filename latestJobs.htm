@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latest Jobs</title>
+  <link rel="stylesheet" href="chatBot.css">
+
+  <style>
+    .button-container {
+      width: 70% !important;
+      margin-top: 10px;
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: flex-start !important;
+      gap: 10px !important;
+      align-items: center !important;
+    }
+
+    .button {
+      width: 180px;
+      padding: 10px 20px;
+      font-size: 14px;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+    }
+
+    .button.missing-skills {
+      background-color: #ff7f50;
+    }
+
+    .button.upskill {
+      background-color: #4caf50;
+    }
+
+    .button.company-reviews {
+      background-color: #007bff;
+    }
+
+    .button.apply-now {
+      background-color: #ff5722;
+    }
+
+    .button:hover {
+      opacity: 0.9;
+    }
+
+    /* General body styles */
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+      overflow-x: hidden;
+      /* Ensure no horizontal scroll bar */
+    }
+
+    /* Container for job cards */
+    #output {
+      max-width: 80%;
+      margin-left: 50px;
+      padding: 0 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    /* Job card styles */
+    #output div {
+      width: 100%;
+      /* max-width: 800px; Restrict the max width of each card */
+      background-color: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Hover effect for cards */
+    #output div:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Job title styles */
+    #output div h3 {
+      margin-top: 0;
+      font-size: 1.8em;
+      color: #2c3e50;
+      font-weight: bold;
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    /* Job details styles */
+    #output div p {
+      margin: 3px 0;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* Highlight for strong text */
+    #output div p strong {
+      color: #34495e;
+    }
+
+
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+      #output {
+        padding: 0 10px;
+      }
+
+      #output div {
+        padding: 15px;
+      }
+
+      #output div h3 {
+        font-size: 1.6em;
+      }
+    }
+
+    /* Navigation Bar */
+    .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #004080;
+            padding: 0.5rem 1rem;
+            color: white;
+        }
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar ul li {
+            margin: 0 0.5rem;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+            padding: 0.5rem 0.8rem;
+        }
+        .navbar ul li a:hover {
+            background-color: #0066cc;
+            border-radius: 5px;
+        }
+        .navbar .auth-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .navbar .auth-buttons a {
+            text-decoration: none;
+            color: #004080;
+            background-color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .navbar .auth-buttons a:hover {
+            background-color: #e6e6e6;
+        }
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+            }
+        }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">Careers Designer</div>
+    <ul>
+      <li><a href="index.htm">Search Jobs</a></li>
+      <li><a href="latestJobs.htm">Latest Jobs</a></li>
+      <li><a href="aboutUs.htm">About Us</a></li>
+    </ul>
+    <div class="auth-buttons">
+      <a href="#login">Login</a>
+      <a href="signup.htm">Sign Up</a>
+    </div>
+  </nav>
+
+  <h1></h1>
+
+  <div id="output"></div>
+
+  <div id="chatbot-container" class="chatbot-container">
+    <div id="chatbot-icon" class="chatbot-icon">
+        💬
+    </div>
+    <div id="chatbot-window" class="chatbot-window hidden">
+        <div class="chatbot-header">
+            <h3>Career Assistant</h3>
+            <button id="close-chatbot">×</button>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages"></div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbot-input" placeholder="Ask me anything...">
+            <button id="send-message">Send</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="chatBot.js"></script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers Designer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chatBot.css">
+</head>
+<body>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Careers Designer</div>
+        <ul>
+            <li><a href="index.htm">Search Jobs</a></li>
+            <li><a href="latestJobs.htm">Latest Jobs</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <a href="#login">Login</a>
+            <a href="signup.htm">Sign Up</a>
+        </div>
+        
+    </nav>
+
+    <!-- search bar -->
+    <section class="job-search-section">
+        
+        <h1 id="heading1">All Your Career Needs at One Place</h1>
+        <h3 id="heading3">Discover Jobs, Learn Skills and Explore Company Insights</h3>
+        
+        <div class="search-bar-container">
+            <form id="job-search-form">
+                <div class="input-group skills">
+                    <input
+                        type="text"
+                        id="skills-input"
+                        placeholder="Search Skills (For eg : JAVA, PYTHON, JAVASCRIPT)"
+                        required
+                    >
+                </div>
+                <div class="input-group location">
+                    <input
+                        type="text"
+                        id="location-input"
+                        placeholder="Location (City, State)"
+                        required
+                    >
+                </div>
+                <button type="submit" id="search-button">Search</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Job Categories -->
+    <section class="job-categories">
+        <h2>Explore Job Categories</h2>
+        <div class="categories-grid">
+            <div class="category">
+                <h3>Software</h3>
+                <p>Explore careers in development, engineering, and IT.</p>
+                <a href="#" class="view-jobs">View Jobs</a>
+            </div>
+            <div class="category">
+                <h3>Marketing</h3>
+                <p>Dive into advertising, SEO, and digital marketing roles.</p>
+                <a href="#" class="view-jobs">View Jobs</a>
+            </div>
+            <div class="category">
+                <h3>Data Analyst</h3>
+                <p>Work with data insights, reporting, and analysis.</p>
+                <a href="#" class="view-jobs">View Jobs</a>
+            </div>
+            <div class="category">
+                <h3>Design</h3>
+                <p>Creative roles in graphic design, UI/UX, and more.</p>
+                <a href="#" class="view-jobs">View Jobs</a>
+            </div>
+            <div class="category">
+                <h3>Finance</h3>
+                <p>Careers in accounting, banking, and financial planning.</p>
+                <a href="#" class="view-jobs">View Jobs</a>
+            </div>
+            <div class="category">
+                <h3>Sales</h3>
+                <p>Opportunities in business development and retail.</p>
+                <a href="#" class="view-jobs">View Jobs</a>
+            </div>
+            <div class="category">
+                <h3>Healthcare</h3>
+                <p>Opportunities in nursing, medical, and therapy fields.</p>
+                <a href="#" class="view-jobs">View Jobs</a>
+            </div>
+            <div class="category">
+                <h3>Education</h3>
+                <p>Explore roles in teaching, training, and academia.</p>
+                <a href="#" class="view-jobs">View Jobs</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="chatbot-container" class="chatbot-container">
+        <div id="chatbot-icon" class="chatbot-icon">
+            💬
+        </div>
+        <div id="chatbot-window" class="chatbot-window hidden">
+            <div class="chatbot-header">
+                <h3>Career Assistant</h3>
+                <button id="close-chatbot">×</button>
+            </div>
+            <div id="chatbot-messages" class="chatbot-messages"></div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbot-input" placeholder="Ask me anything...">
+                <button id="send-message">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="chatBot.js"></script>
+    <script src="searchScript.js"></script>
+</body>
+</html>
+
