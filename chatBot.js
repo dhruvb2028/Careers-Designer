@@ -1,6 +1,6 @@
 // Gemini API Configuration
-const API_KEY = 'AIzaSyDFe-vQXZpD7PlfDUuGiZb3qSruwsbFN1g';
-const MODEL_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
+const API_KEY = window.CONFIG?.GEMINI_API_KEY || '';
+const MODEL_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
 // Chatbot UI Elements
 const chatbotIcon = document.getElementById('chatbot-icon');

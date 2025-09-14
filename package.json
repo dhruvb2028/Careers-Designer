@@ -1,0 +1,19 @@
+{
+  "name": "careers-designer",
+  "version": "1.0.0",
+  "description": "Career Designer web application",
+  "main": "index.htm",
+  "scripts": {
+    "start": "live-server --open=index.htm",
+    "build": "node scripts/build-config.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "keywords": ["careers", "jobs", "web"],
+  "author": "",
+  "license": "MIT"
+}
